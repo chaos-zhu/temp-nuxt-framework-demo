@@ -11,7 +11,10 @@ ENV HOST 0.0.0.0
 
 # 创建app目录(镜像打包)
 RUN mkdir /app
+# 复制目录package.json到docker
+COPY ./package.json /app
 # 安装依赖
+RUN npm install
 # cd到/app
 WORKDIR /app
 # 复制目录所有文件到docker
@@ -23,10 +26,12 @@ EXPOSE 3000
 # 国内环境下构建请把下面注释打开
 # RUN npm config set registry https://registry.npm.taobao.org
 # 打包
-RUN npm install
 RUN npm run build
 # run
 CMD ["npm", "start"]
+
+# 构建
+# docker build --build-arg cur_env=uat -t temp-nuxt-demo:1.2 .
 
 # 启动命令
 # docker run -d -p 8080:3000 --build-arg cur_env=uat  temp-nuxt-demo:1.0
