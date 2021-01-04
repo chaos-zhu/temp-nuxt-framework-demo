@@ -8,10 +8,12 @@ ARG cur_env=default_value
 ENV CUR_ENV=$cur_env
 ENV NODE_ENV=production
 ENV HOST 0.0.0.0
+
+RUN npm install
+
 # 创建app目录(镜像打包)
 RUN mkdir -p /app
 # 安装依赖
-RUN npm install
 # cd到/app
 WORKDIR /app
 # 复制目录所有文件到docker
