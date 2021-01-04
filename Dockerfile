@@ -34,7 +34,7 @@ CMD ["npm", "start"]
 # docker build --build-arg cur_env=uat -t temp-nuxt-demo:1.0 .
 
 # 启动命令
-# docker run -d -p 8080:3000  temp-nuxt-demo:1.0
+# docker run -d -p 8080:3000  IMAGE ID/CONTAINER ID
 
 # 运行的镜像
 # docker ps -a
