@@ -1,20 +1,21 @@
-# nuxt-demo
+# docker部署nuxt项目demo
 
-## Build Setup
+## 构建
 
-```bash
-# install dependencies
-$ npm install
+`docker build --build-arg cur_env=uat -t imageName:Tag .`
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## 后台启动
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+`docker run -d -p 8080:3000  IMAGE-ID/CONTAINER-ID`
 
-# generate static project
-$ npm run generate
-```
+## 所有容器
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+`docker ps -a`
+
+## 查看容器日志
+
+`docker logs CONTAINER`
+
+## 未解决的问题
+
+> 构建后如何自动运行镜像，删除上一版本容器？
