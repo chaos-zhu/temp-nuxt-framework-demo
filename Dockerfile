@@ -9,10 +9,8 @@ ENV CUR_ENV=$cur_env
 ENV NODE_ENV=production
 ENV HOST 0.0.0.0
 
-RUN npm install
-
 # 创建app目录(镜像打包)
-RUN mkdir -p /app
+RUN mkdir /app
 # 安装依赖
 # cd到/app
 WORKDIR /app
@@ -25,6 +23,7 @@ EXPOSE 3000
 # 国内环境下构建请把下面注释打开
 # RUN npm config set registry https://registry.npm.taobao.org
 # 打包
+RUN npm install
 RUN npm run build
 # run
 CMD ["npm", "start"]
