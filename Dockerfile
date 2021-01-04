@@ -2,23 +2,26 @@
 FROM node:12.18.4
 # author
 MAINTAINER chaoszhu
-# 环境配置
-# default_value默认为 ''
+# default_value默认为 '', 可在构建时指定 --build-arg cur_env=dev
 ARG cur_env=default_value
 ENV CUR_ENV=$cur_env
 ENV NODE_ENV=production
 ENV HOST 0.0.0.0
 
 # 创建app目录(镜像打包)
-RUN mkdir /app
+# RUN mkdir /app
+
 # 复制目录package.json到docker
-COPY package.json /app
+COPY package.json /
+
 # cd到/app
-WORKDIR /app
+# WORKDIR /app
+
 # 安装依赖
 RUN npm install
+
 # 复制目录所有文件到docker
-COPY . /app
+COPY . /
 
 # 镜像暴露的端口
 EXPOSE 3000

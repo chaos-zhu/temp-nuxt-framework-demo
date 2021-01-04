@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        nuxt-demo-v1.2
+        nuxt-demo-v1.3
       </h1>
       <div class="links">
         <a
