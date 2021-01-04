@@ -12,11 +12,11 @@ ENV HOST 0.0.0.0
 # 创建app目录(镜像打包)
 RUN mkdir /app
 # 复制目录package.json到docker
-COPY ./package.json /app
-# 安装依赖
-RUN npm install
+COPY package.json /app
 # cd到/app
 WORKDIR /app
+# 安装依赖
+RUN npm install
 # 复制目录所有文件到docker
 COPY . /app
 
@@ -31,10 +31,10 @@ RUN npm run build
 CMD ["npm", "start"]
 
 # 构建
-# docker build --build-arg cur_env=uat -t temp-nuxt-demo:1.2 .
+# docker build --build-arg cur_env=uat -t temp-nuxt-demo:1.0 .
 
 # 启动命令
-# docker run -d -p 8080:3000 --build-arg cur_env=uat  temp-nuxt-demo:1.0
+# docker run -d -p 8080:3000  temp-nuxt-demo:1.0
 
 # 运行的镜像
 # docker ps -a
